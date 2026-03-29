@@ -5,9 +5,13 @@ const gameSchema = new mongoose.Schema({
     minPrice: Number,
     currentPrice: Number,
     rounds: Number,
-    maxRounds: Number
+    maxRounds: Number,
+    deal: {
+        type: Boolean,
+        default: false
+    }
 })
 
-const gameModel = mongoose.model("games",gameSchema)
+const gameModel = mongoose.model("games", gameSchema)
 
 export default gameModel
