@@ -1,21 +1,27 @@
-import { getLeaderBoardService, makeOfferService, startGameService } from "../services/game.service.js"
+import { getGameService, getLeaderBoardService, makeOfferService, startGameService } from "../services/game.service.js"
 
 
 export const startGameController = async (req, res) => {
-
     try {
-        const data = await startGameService()
+        const { productName, productImage, basePrice } = req.body;
+
+        if (!productName || !productImage || !basePrice) {
+            return res.status(400).json({ error: "Product details required" });
+        }
+
+        const data = await startGameService(productName, productImage, basePrice);
+
         res.status(201).json({
             message: "Game started successfully",
             data
-        })
+        });
     } catch (err) {
         res.status(500).json({
             err: "Failed to start game",
             details: err.message
-        })
+        });
     }
-}
+};
 
 export const offerController = async (req, res) => {
     try {
@@ -80,3 +86,21 @@ export const leaderboardController = async (req, res) => {
     }
 
 }
+
+export const getGameController = async (req, res) => {
+  try {
+    const { gameId } = req.params;
+    const game = await getGameService(gameId);
+
+    if (!game) {
+      return res.status(404).json({ error: "Game not found" });
+    }
+
+    res.status(200).json({
+      message: "Game fetched successfully",
+      data: game
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch game", details: err.message });
+  }
+};

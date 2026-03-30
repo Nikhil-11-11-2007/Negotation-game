@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body,#root{
+    height: 100%;
+    width: 100%;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+  font-family: Arial;
+}
+
+.chat-box {
+  height: 250px;
+  overflow-y: auto;
+  border: 1px solid #444;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.user {
+  text-align: right;
+  color: #38bdf8;
+}
+
+.ai {
+  text-align: left;
+  color: #facc15;
+}
