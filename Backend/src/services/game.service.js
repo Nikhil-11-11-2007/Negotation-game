@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid"
 import gameModel from "../models/game.model.js"
 import { airesponse } from "../utils/aiLogic.js"
-import leaderboardModel from "../models/leaderboard.model.js"
+import leaderboardModel from "../models/leaderBoard.model.js"
 
 export const startGameService = async (productName, productImage, basePrice) => {
     const gameId = uuidv4();

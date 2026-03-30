@@ -3,6 +3,7 @@ import gameRouter from "./routes/game.routes.js";
 import cors from "cors"
 
 const app = express()
+app.use(express.static('./public'))
 
 
 app.use(express.json())
